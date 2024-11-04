@@ -1,0 +1,59 @@
+.book-items-container {
+    display: flex;
+    flex-direction: column; /* Stack book items vertically */
+    align-items: center;
+    width: 70%; /* Full width for responsive design */
+    gap: 10px; /* Space between each book item */
+    margin-top: 20px;
+}
+
+.book-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 80%; /* Adjust width for responsiveness */
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 80px;
+    height: 80px;
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+/* Book description styling */
+.book-description {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between label-input pairs */
+}
+
+.book-description div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between label and input */
+    flex-wrap: nowrap; /* Keep label and input on the same line */
+}
+
+.book-description label {
+    font-weight: bold;
+}
+
+.book-description input[type="text"] {
+    width: 36%; /* Set input width to half of the container */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Include padding within width */
+}

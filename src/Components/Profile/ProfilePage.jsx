@@ -18,9 +18,10 @@ export const ProfilePage = () => {
                 <input type='text' value={email} disabled />
                 <p>Password:</p>
                 <input type='text' value={password} disabled />
-            </div>
+                </div>  
             <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
         </div>
+        
     );
 };
 

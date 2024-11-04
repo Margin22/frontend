@@ -8,7 +8,7 @@ export const HomePage = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const location = useLocation();   
   const navigate = useNavigate(); // Initialize useNavigate
-  const { price, date, name } = location.state || {};
+  const { price, date, name, Category } = location.state || {};
   const toggleCategories = () => {
     setShowCategories(!showCategories);
   };
@@ -20,6 +20,13 @@ export const HomePage = () => {
   const handleProfileClick = () => {
     navigate('/profile'); // Navigate to ProfilePage
 };
+  const handlePostYourBookClick = () => {
+    navigate('/postyourbook');
+  };
+  const handleYourPostingsClick = () => {
+    navigate('/yourpostings');
+  };
+
 
   return (
     <div className="homepage">
@@ -38,10 +45,11 @@ export const HomePage = () => {
         <div className="book-items-container">
           {[...Array(10)].map((_, index) => (
             <div key={index} className="book-item">
-              <div className="book-image"> <img src={book_icon}/></div>
+              <div className="book-image"> <img src={book_icon} alt='book'/></div>
               <div className="book-description"><label>Posted Date:</label> <input type='text' value={date} disabled />
               <label>Book Name:</label> <input type='text' value={name} disabled /> 
               <label>Price:</label> <input type='text' value={price} disabled />
+              <label>Book Category:</label> <input type= 'text' value={Category} disabled />
               </div>
             </div>
           ))}
@@ -52,8 +60,8 @@ export const HomePage = () => {
       {showSidebar && (
         <aside className={`sidebar ${showSidebar ? 'slide-in' : ''}`}>
           <button onClick={handleProfileClick}>Profile</button> {/* Existing Profile button with navigation */}
-          <button>Sell your book</button>
-          <button>Update/Edit your book</button>
+          <button onClick={handlePostYourBookClick}>Post your book</button>
+          <button onClick={handleYourPostingsClick}>Your Postings</button>
         </aside>
       )}
       

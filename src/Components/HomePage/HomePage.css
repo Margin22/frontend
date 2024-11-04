@@ -1,0 +1,203 @@
+/* General styling for the homepage */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, #b3a4ec, #91d1f9); /* Updated gradient colors */
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #3a57c4;
+    color: white;
+    margin-top: 2%;
+}
+
+/* Logo container styling */
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 125px;
+    height: auto;
+    max-width: 1000px; /* Adjust logo size */
+    margin-right: 10px;
+}
+
+/* Search bar container */
+.search-container {
+    flex: 4;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.category-button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.category-button:hover {
+    background-color: #0056b3;
+}
+
+/* Book listing container */
+.book-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Container for all book items */
+.book-items-container {
+    display: flex;
+    flex-direction: column; /* Stack book items vertically */
+    align-items: center;
+    width: 70%; /* Full width for responsive design */
+    gap: 10px; /* Space between each book item */
+    margin-top: 20px;
+}
+
+.book-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 80%; /* Adjust width for responsiveness */
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 80px;
+    height: 80px;
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+/* Book description styling */
+.book-description {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between label-input pairs */
+}
+
+.book-description div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between label and input */
+    flex-wrap: nowrap; /* Keep label and input on the same line */
+}
+
+.book-description label {
+    font-weight: bold;
+}
+
+.book-description input[type="text"] {
+    width: 36%; /* Set input width to half of the container */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Include padding within width */
+}
+
+/* Sidebar sliding effect */
+.sidebar {
+    position: absolute;
+    top: 240px;
+    left: -200px; /* Hidden off-screen initially */
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: left 0.3s ease; /* Smooth slide effect */
+}
+
+.sidebar.slide-in {
+    left: 20px; /* Slide in to visible position */
+}
+
+.sidebar button {
+    padding: 10px;
+    background-color: #3b82f6;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Bars icon styling - left side of the search bar */
+.bars-icon {
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 100px;
+}
+
+/* Dropdown menu for categories with sliding effect */
+.dropdown-menu {
+    position: absolute;
+    top: 240px;
+    right: -200px; /* Hidden off-screen initially */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease; /* Smooth slide effect */
+}
+
+.dropdown-menu.slide-in {
+    right: 20px; /* Slide in to visible position */
+}
+
+.dropdown-menu button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}

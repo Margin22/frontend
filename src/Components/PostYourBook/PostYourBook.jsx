@@ -13,6 +13,7 @@ export const PostYourBook = () => {
         publicationDate: '',
         publisherName: '',
         edition: '',
+        Category: '',
         language: '',
         condition: '',
         price: '',
@@ -64,6 +65,8 @@ export const PostYourBook = () => {
                 <input type='text' name="publisherName" value={bookInfo.publisherName} onChange={handleChange} />
                 <p>Edition:</p>
                 <input type='text' name="edition" value={bookInfo.edition} onChange={handleChange} />
+                <p>Category:</p>
+                <input type='text' name="Category" value={bookInfo.Category} onChange={handleChange} />
                 <p>Language:</p>
                 <input type='text' name="language" value={bookInfo.language} onChange={handleChange} />
                 <p>Condition:</p>

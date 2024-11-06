@@ -5,6 +5,7 @@ import { LoginSignup } from "../LoginSignup/LoginSignup"; // Ensure correct rela
 import { ProfilePage } from "../Profile/ProfilePage";
 import { PostYourBook } from "../PostYourBook/PostYourBook";
 import { YourPostings } from "../YourPostings/YourPostings";
+import {OrderHistory} from "../OrderHistory/OrderHistory";
 const UserRoutes = () => {
     return (
         <Routes>
@@ -13,6 +14,7 @@ const UserRoutes = () => {
             <Route path="/profile" element={<ProfilePage/>} />
             <Route path="/postyourbook" element={<PostYourBook/>} />
             <Route path="/yourpostings" element={<YourPostings/>} />
+            <Route path="/orderhistory" element={<OrderHistory/>} />
         </Routes>
     );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './HomePage.css'; // Ensure this path is correct
-import web_icon from '../Assets/web logo1.jpg'; // Ensure correct relative path
 import {useLocation, useNavigate } from 'react-router-dom'; // Importing useNavigate
 import book_icon from '../Assets/book.jpg';
 export const HomePage = () => {
@@ -22,13 +21,13 @@ export const HomePage = () => {
   const handleYourPostingsClick = () => {
     navigate('/yourpostings');
   };
+  const handleOrderHistoryClick = () => {
+    navigate('/orderhistory');
+  };
 
 
   return (
     <div className="homepage">
-      <div className="logo-container">
-        <img src={web_icon} alt="Logo" className="logo" />
-      </div>
       <header className="header">
         <button onClick={toggleSidebar} className="bars-icon">☰</button>
         <div className="search-container">
@@ -57,6 +56,7 @@ export const HomePage = () => {
           <button onClick={handleProfileClick}>Profile</button> {/* Existing Profile button with navigation */}
           <button onClick={handlePostYourBookClick}>Post your book</button>
           <button onClick={handleYourPostingsClick}>Your Postings</button>
+          <button onClick={handleOrderHistoryClick}>Order History</button>
         </aside>
       )}
     </div>

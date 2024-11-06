@@ -16,24 +16,8 @@
     padding: 30px 20px;
     background-color: #08090c;
     color: white;
-    margin-top: 2%;
+    margin-top: -1.4%;
 }
-
-/* Logo container styling */
-.logo-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    width: 125px;
-    height: auto;
-    max-width: 1000px; /* Adjust logo size */
-    margin-right: 10px;
-}
-
 /* Search bar container */
 .search-container {
     flex: 4;
@@ -69,7 +53,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 80%;
     margin-top: 20px;
     background-color: #eaeaea9d;
 }
@@ -153,6 +137,7 @@
 
 .sidebar.slide-in {
     left: 20px; /* Slide in to visible position */
+    top: 98px;
 }
 
 .sidebar button {

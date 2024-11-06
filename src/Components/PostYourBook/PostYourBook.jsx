@@ -49,29 +49,30 @@ export const PostYourBook = () => {
     };
 
     return (
-        <div className="Post-container">
-            <h2>Post your Book</h2>
+        <div className="background">
+             <div className="Post-container">
+                     <h2>Post your Book</h2>
             <div className="PostYourBook-info1">
                 <br></br>
                 <img src={book_icon} alt="book"/>
                 <br></br>
-                <p>Book Name:</p>
+                <p><b>Book Name:</b></p>
                 <input type='text' name="bookName" value={bookInfo.bookName} onChange={handleChange} />
-                <p>Author's Name:</p>
+                <p><b>Author's Name:</b></p>
                 <input type='text' name="authorName" value={bookInfo.authorName} onChange={handleChange} />
-                <p>Publication Date:</p>
+                <p><b>Publication Date:</b></p>
                 <input type='text' name="publicationDate" value={bookInfo.publicationDate} onChange={handleChange} />
-                <p>Publisher Name:</p>
+                <p><b>Publisher Name:</b></p>
                 <input type='text' name="publisherName" value={bookInfo.publisherName} onChange={handleChange} />
-                <p>Edition:</p>
+                <p><b>Edition:</b></p>
                 <input type='text' name="edition" value={bookInfo.edition} onChange={handleChange} />
-                <p>Category:</p>
+                <p><b>Category:</b></p>
                 <input type='text' name="Category" value={bookInfo.Category} onChange={handleChange} />
-                <p>Language:</p>
+                <p><b>Language:</b></p>
                 <input type='text' name="language" value={bookInfo.language} onChange={handleChange} />
-                <p>Condition:</p>
+                <p><b>Condition:</b></p>
                 <input type='text' name="condition" value={bookInfo.condition} onChange={handleChange} />
-                <p>Price:</p>
+                <p><b>Price:</b></p>
                 <input type='text' name="price" value={bookInfo.price} onChange={handleChange} />
             </div>
             <br></br>
@@ -80,19 +81,20 @@ export const PostYourBook = () => {
             <br></br>
             <br></br>
             <div className='PostYourBook-info2'>
-                <p>Seller Name:</p>
+                <p><b>Seller Name:</b></p>
                 <input type='text' name="sellerName" value={bookInfo.sellerName} onChange={handleChange} />
-                <p>Email Address:</p>
+                <p><b>Email Address:</b></p>
                 <input type='text' name="email" value={bookInfo.email} onChange={handleChange} />
-                <p>Address:</p>
+                <p><b>Address:</b></p>
                 <input type='text' name="address" value={bookInfo.address} onChange={handleChange} />
-                <p>Phone No.:</p>
+                <p><b>Phone No.:</b></p>
                 <input type='text' name="phone" value={bookInfo.phone} onChange={handleChange} />
-                <p>Deliverable? (yes/no):</p>
+                <p><b>Deliverable? (yes/no):</b></p>
                 <input type='text' name="deliverable" value={bookInfo.deliverable} onChange={handleChange} />
             </div>
             
             <button onClick={handlePost} className="post-button">Post</button>
         </div>
+    </div>
     );
 };

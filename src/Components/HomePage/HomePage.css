@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #cdf8fd;
+    background-image: url("../Assets/bground3.jpg");
     padding: 20px;
     min-height: 100vh;
 }
@@ -71,14 +71,15 @@
     align-items: center;
     width: 100%;
     margin-top: 20px;
+    background-color: #eaeaea9d;
 }
 
 /* Container for all book items */
-.book-items-container {
+.book-items-container2 {
     display: flex;
     flex-direction: column; /* Stack book items vertically */
     align-items: center;
-    width: 70%; /* Full width for responsive design */
+    width: 90%; /* Full width for responsive design */
     gap: 10px; /* Space between each book item */
     margin-top: 20px;
 }
@@ -87,17 +88,15 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    background: white;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 80%; /* Adjust width for responsiveness */
+    width: 100%; /* Adjust width for responsiveness */
     margin-bottom: 20px;
 }
 
 .book-image {
     width: 80px;
     height: 80px;
-    background: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,12 +125,13 @@
 }
 
 .book-description input[type="text"] {
-    width: 36%; /* Set input width to half of the container */
+    width: 100%; /* Set input width to half of the container */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-    box-sizing: border-box; /* Include padding within width */
+    box-sizing: border-box; 
+    flex-direction: column;/* Include padding within width */
 }
 
 /* Sidebar sliding effect */
@@ -172,32 +172,4 @@
     border: none;
     cursor: pointer;
     margin-right: 100px;
-}
-
-/* Dropdown menu for categories with sliding effect */
-.dropdown-menu {
-    position: absolute;
-    top: 240px;
-    right: -200px; /* Hidden off-screen initially */
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease; /* Smooth slide effect */
-}
-
-.dropdown-menu.slide-in {
-    right: 20px; /* Slide in to visible position */
-}
-
-.dropdown-menu button {
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 4px;
-    cursor: pointer;
 }

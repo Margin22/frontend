@@ -4,14 +4,10 @@ import web_icon from '../Assets/web logo1.jpg'; // Ensure correct relative path
 import {useLocation, useNavigate } from 'react-router-dom'; // Importing useNavigate
 import book_icon from '../Assets/book.jpg';
 export const HomePage = () => {
-  const [showCategories, setShowCategories] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const location = useLocation();   
   const navigate = useNavigate(); // Initialize useNavigate
   const { price, date, name, Category } = location.state || {};
-  const toggleCategories = () => {
-    setShowCategories(!showCategories);
-  };
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -37,12 +33,11 @@ export const HomePage = () => {
         <button onClick={toggleSidebar} className="bars-icon">☰</button>
         <div className="search-container">
           <input type="text" className="search-bar" placeholder="Search for books" />
-          <button onClick={toggleCategories} className="category-button">Show Books Categories</button>
         </div>
       </header>
       <main className="book-list">
         <h2 className="book-list-title">Available Books</h2>
-        <div className="book-items-container">
+        <div className="book-items-container2">
           {[...Array(10)].map((_, index) => (
             <div key={index} className="book-item">
               <div className="book-image"> <img src={book_icon} alt='book'/></div>
@@ -63,22 +58,6 @@ export const HomePage = () => {
           <button onClick={handlePostYourBookClick}>Post your book</button>
           <button onClick={handleYourPostingsClick}>Your Postings</button>
         </aside>
-      )}
-      
-      {/* Dropdown menu for categories with slide-in effect */}
-      {showCategories && (
-        <div className={`dropdown-menu ${showCategories ? 'slide-in' : ''}`}>
-          <button>Computer and Technology</button>
-          <button>History</button>
-          <button>Physics</button>
-          <button>Chemistry</button>
-          <button>Biology</button>
-          <button>Math</button>
-          <button>Encyclopedias</button>
-          <button>Business</button>
-          <button>Law</button>
-          <button>Travel</button>
-        </div>
       )}
     </div>
   );

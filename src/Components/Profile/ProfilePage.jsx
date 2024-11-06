@@ -9,19 +9,18 @@ export const ProfilePage = () => {
     const { username, email, password } = location.state || {};
 
     return (
+        <div className="Background">
         <div className="profile-container">
             <h2>User Profile</h2>
             <div className="profile-info">
-                <p>Username:</p>
+                <p><b>Username:</b></p>
                 <input type='text' value={username} disabled />
-                <p>Email:</p>
+                <p><b>Email:</b></p>
                 <input type='text' value={email} disabled />
-                <p>Password:</p>
-                <input type='text' value={password} disabled />
                 </div>  
             <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
         </div>
-        
+        </div>
     );
 };
 

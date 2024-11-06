@@ -1,11 +1,25 @@
+.Background2 {
+    background-image: url("../Assets/bground3.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Full height of the viewport to allow scrolling */
+    display: flex;
+    justify-content: center;
+    padding: 20px; /* Adds padding for better spacing */
+}
 .book-items-container {
     display: flex;
-    flex-direction: column; /* Stack book items vertically */
+    flex-direction: column;
     align-items: center;
-    width: 70%; /* Full width for responsive design */
-    gap: 10px; /* Space between each book item */
-    margin-top: 20px;
+    width: 70%;
+    padding: 40px; /* Adds more internal spacing */
+    margin: 50px auto; /* Centers container and reduces the margin to free up space */
+    background-color: #ffffff9d;
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    max-height: 90vh; /* Optional: Limits the height for internal scrolling */
+    overflow-y: auto; /* Allows scrolling if content exceeds the container height */
 }
+
 
 .book-item {
     display: flex;

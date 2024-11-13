@@ -6,7 +6,7 @@ export const ProfilePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     
-    const { username, email, password } = location.state || {};
+    const { username, email} = location.state || {};
 
     return (
         <div className="Background">

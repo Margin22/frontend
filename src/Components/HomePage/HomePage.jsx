@@ -27,15 +27,15 @@ export const HomePage = () => {
   const handleYourPostingsClick = () => {
     navigate('/yourpostings');
   };
-  
-  const handleOrderHistoryClick = () => {
-    navigate('/orderhistory');
-  };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
+  const handleBookDescriptionClick = () => {
+    navigate('/bookdescription');
+  };
+  
   const handleSearch = () => {
     // Filter books based on the search term, only if book.name is defined
     const results = Array(10).fill({ name, Category, price, date }).filter(book =>
@@ -68,7 +68,7 @@ export const HomePage = () => {
         <h2 className="book-list-title">Available Books</h2>
         <div className="book-items-container2">
           {(filteredBooks.length > 0 ? filteredBooks : Array(10).fill({ name, Category, price, date })).map((book, index) => (
-            <div key={index} className="book-item">
+            <div key={index} className="book-item" onClick={handleBookDescriptionClick} style={{ cursor: 'pointer' }}>
               <div className="book-image">
                 <img src={book_icon} alt="book" />
               </div>
@@ -88,7 +88,6 @@ export const HomePage = () => {
           <button onClick={handleProfileClick}>Profile</button>
           <button onClick={handlePostYourBookClick}>Post your book</button>
           <button onClick={handleYourPostingsClick}>Your Postings</button>
-          <button onClick={handleOrderHistoryClick}>Order History</button>
         </aside>
       )}
     </div>

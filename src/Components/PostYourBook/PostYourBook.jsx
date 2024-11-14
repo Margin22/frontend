@@ -1,100 +1,307 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import book_icon from '../Assets/book.jpg'; // Import the book icon for the form
 import './PostYourBook.css';
-import book_icon from '../Assets/book.jpg';
 
-export const PostYourBook = () => {
-    const navigate = useNavigate();
-
-    // State for each input
-    const [bookInfo, setBookInfo] = useState({
-        bookName: '',
-        authorName: '',
-        publicationDate: '',
-        publisherName: '',
-        edition: '',
-        Category: '',
-        language: '',
-        condition: '',
-        price: '',
-        sellerName: '',
-        email: '',
-        address: '',
-        phone: '',
-        deliverable: '',
-    });
-
-    // Handle input change
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setBookInfo({
-            ...bookInfo,
-            [name]: value,
+const PostYourBook = () => {
+  const navigate = useNavigate();
+  const [sellerInfo, setSellerInfo] = useState(null);
+  const [bookInfo, setBookInfo] = useState({
+    sellerName: '',
+    email: '',
+    address: '',
+    phone: '',
+    deliverable: 'yes',
+    bookName: '',
+    authorName: '',
+    publicationDate: '',
+    publisherName: '',
+    edition: '',
+    category: '',
+    language: '',
+    condition: '',
+    price: '',
+  });
+  useEffect(() => {
+    const fetchSeller = async () => {
+      try {
+        const token = localStorage.getItem("accessToken");
+        if (!token) {
+          alert('User not authenticated. Please log in.');
+          return;
+        }
+  
+        const response = await fetch('http://localhost:8000/api/auth/user', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
+  
+        if (!response.ok) {
+          console.log('User details fetch response:', await response.text());
+          alert('Failed to fetch user details.');
+          return;
+        }
+  
+        const userData = await response.json();
+  
+        const sellerResponse = await fetch(`http://localhost:8000/api/sellers/detail/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (sellerResponse.status === 404) {
+          console.log("No seller profile found; setting up for new seller input.");
+          setSellerInfo(null); // Allows user to fill in the form
+        } else if (!sellerResponse.ok) {
+          const errorText = await sellerResponse.text();
+          console.log('Seller details fetch error:', errorText);
+          alert('Failed to fetch seller details. Please try again or contact support.');
+        } else {
+          const sellerData = await sellerResponse.json();
+          setSellerInfo(sellerData);
+          setBookInfo((prevInfo) => ({
+            ...prevInfo,
+            sellerName: sellerData.name,
+            email: sellerData.email,
+            address: sellerData.address,
+            phone: sellerData.phone,
+            deliverable: sellerData.available_to_deliver ? 'yes' : 'no',
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching seller:', error);
+      }
     };
+  
+    fetchSeller();
+  }, []);
+  
+  
+  
+  
 
-    // Function to handle the post
-    const handlePost = () => {
-        // Simple validation to check if all fields are filled
-        if (Object.values(bookInfo).some(value => value.trim() === '')) {
-            alert('Please fill out all fields before posting.');
-            return;
+  const handlePost = async () => {
+    if (Object.values(bookInfo).some(value => value.trim() === '')) {
+      alert('Please fill out all fields before posting.');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        alert('User not authenticated. Please log in.');
+        return;
+      }
+
+      // Step 1: Check if seller exists and create one if necessary
+      let sellerId = sellerInfo?.id;
+      if (!sellerInfo) {
+        const sellerResponse = await fetch('http://localhost:8000/api/sellers/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            name: bookInfo.sellerName,
+            email: bookInfo.email,
+            address: bookInfo.address,
+            phone: bookInfo.phone,
+            available_to_deliver: bookInfo.deliverable.toLowerCase() === 'yes',
+          }),
+        });
+
+        if (!sellerResponse.ok) {
+          throw new Error('Failed to create seller');
         }
 
-        // Post data (here you would normally send it to a backend or context)
-        console.log('Posted Book Info:', bookInfo);
+        const sellerData = await sellerResponse.json();
+        sellerId = sellerData.id;
+      }
 
-        // Navigate to HomePage
-        navigate('/home');
-    };
+      // Step 2: Create the book using fetch
+      const bookResponse = await fetch('http://localhost:8000/api/books/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title: bookInfo.bookName,
+          author: bookInfo.authorName,
+          publication_date: bookInfo.publicationDate,
+          publisher_name: bookInfo.publisherName,
+          edition: bookInfo.edition,
+          category: bookInfo.category,
+          language: bookInfo.language,
+          condition: bookInfo.condition,
+          price: parseFloat(bookInfo.price),
+          seller: sellerId,
+        }),
+      });
 
-    return (
-        <div className="background">
-             <div className="Post-container">
-                     <h2>Post your Book</h2>
-            <div className="PostYourBook-info1">
-                <br></br>
-                <img src={book_icon} alt="book"/>
-                <br></br>
-                <p><b>Book Name:</b></p>
-                <input type='text' name="bookName" value={bookInfo.bookName} onChange={handleChange} />
-                <p><b>Author's Name:</b></p>
-                <input type='text' name="authorName" value={bookInfo.authorName} onChange={handleChange} />
-                <p><b>Publication Date:</b></p>
-                <input type='text' name="publicationDate" value={bookInfo.publicationDate} onChange={handleChange} />
-                <p><b>Publisher Name:</b></p>
-                <input type='text' name="publisherName" value={bookInfo.publisherName} onChange={handleChange} />
-                <p><b>Edition:</b></p>
-                <input type='text' name="edition" value={bookInfo.edition} onChange={handleChange} />
-                <p><b>Category:</b></p>
-                <input type='text' name="Category" value={bookInfo.Category} onChange={handleChange} />
-                <p><b>Language:</b></p>
-                <input type='text' name="language" value={bookInfo.language} onChange={handleChange} />
-                <p><b>Condition:</b></p>
-                <input type='text' name="condition" value={bookInfo.condition} onChange={handleChange} />
-                <p><b>Price:</b></p>
-                <input type='text' name="price" value={bookInfo.price} onChange={handleChange} />
-            </div>
-            <br></br>
-            <br></br>
-            <p>______________________________________________________________________________________________________________________________________________________________________</p>
-            <br></br>
-            <br></br>
-            <div className='PostYourBook-info2'>
-                <p><b>Seller Name:</b></p>
-                <input type='text' name="sellerName" value={bookInfo.sellerName} onChange={handleChange} />
-                <p><b>Email Address:</b></p>
-                <input type='text' name="email" value={bookInfo.email} onChange={handleChange} />
-                <p><b>Address:</b></p>
-                <input type='text' name="address" value={bookInfo.address} onChange={handleChange} />
-                <p><b>Phone No.:</b></p>
-                <input type='text' name="phone" value={bookInfo.phone} onChange={handleChange} />
-                <p><b>Deliverable? (yes/no):</b></p>
-                <input type='text' name="deliverable" value={bookInfo.deliverable} onChange={handleChange} />
-            </div>
-            
-            <button onClick={handlePost} className="post-button">Post</button>
-        </div>
+      if (!bookResponse.ok) {
+        throw new Error('Failed to create book');
+      }
+
+      alert('Book posted successfully!');
+      navigate('/home');
+    } catch (error) {
+      console.error('Error posting book:', error);
+      alert('Failed to post book. Please check the form and try again.');
+    }
+  };
+
+  return (
+    <div className="background">
+      <div className="Post-container">
+        <h2>Post Your Book</h2>
+        <form onSubmit={(e) => e.preventDefault()}>
+
+         {/* Seller Info - Editable if New User */}
+<div className="PostYourBook-info1">
+  <p><strong>Seller Name</strong></p>
+  <input
+    type="text"
+    value={bookInfo.sellerName}
+    readOnly={!!sellerInfo} // Editable if no seller info
+    onChange={(e) => setBookInfo({ ...bookInfo, sellerName: e.target.value })}
+  />
+</div>
+
+<div className="PostYourBook-info1">
+  <p><strong>Email</strong></p>
+  <input
+    type="email"
+    value={bookInfo.email}
+    readOnly={!!sellerInfo} // Editable if no seller info
+    onChange={(e) => setBookInfo({ ...bookInfo, email: e.target.value })}
+  />
+</div>
+
+<div className="PostYourBook-info1">
+  <p><strong>Address</strong></p>
+  <input
+    type="text"
+    value={bookInfo.address}
+    readOnly={!!sellerInfo} // Editable if no seller info
+    onChange={(e) => setBookInfo({ ...bookInfo, address: e.target.value })}
+  />
+</div>
+
+<div className="PostYourBook-info1">
+  <p><strong>Phone</strong></p>
+  <input
+    type="text"
+    value={bookInfo.phone}
+    readOnly={!!sellerInfo} // Editable if no seller info
+    onChange={(e) => setBookInfo({ ...bookInfo, phone: e.target.value })}
+  />
+</div>
+
+<div className="PostYourBook-info1">
+  <p><strong>Available to Deliver</strong></p>
+  <input
+    type="text"
+    value={bookInfo.deliverable}
+    readOnly={!!sellerInfo} // Editable if no seller info
+    onChange={(e) => setBookInfo({ ...bookInfo, deliverable: e.target.value })}
+  />
+  
+</div>
+
+
+          {/* Book Info Fields */}
+          <div className="PostYourBook-info2">
+            <p><strong>Book Name</strong></p>
+            <input
+              type="text"
+              value={bookInfo.bookName}
+              onChange={(e) => setBookInfo({ ...bookInfo, bookName: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Author Name</strong></p>
+            <input
+              type="text"
+              value={bookInfo.authorName}
+              onChange={(e) => setBookInfo({ ...bookInfo, authorName: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Publication Date</strong></p>
+            <input
+              type="date"
+              value={bookInfo.publicationDate}
+              onChange={(e) => setBookInfo({ ...bookInfo, publicationDate: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Publisher Name</strong></p>
+            <input
+              type="text"
+              value={bookInfo.publisherName}
+              onChange={(e) => setBookInfo({ ...bookInfo, publisherName: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Edition</strong></p>
+            <input
+              type="text"
+              value={bookInfo.edition}
+              onChange={(e) => setBookInfo({ ...bookInfo, edition: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Category</strong></p>
+            <input
+              type="text"
+              value={bookInfo.category}
+              onChange={(e) => setBookInfo({ ...bookInfo, category: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Language</strong></p>
+            <input
+              type="text"
+              value={bookInfo.language}
+              onChange={(e) => setBookInfo({ ...bookInfo, language: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Condition</strong></p>
+            <input
+              type="text"
+              value={bookInfo.condition}
+              onChange={(e) => setBookInfo({ ...bookInfo, condition: e.target.value })}
+            />
+          </div>
+
+          <div className="PostYourBook-info2">
+            <p><strong>Price</strong></p>
+            <input
+              type="number"
+              value={bookInfo.price}
+              onChange={(e) => setBookInfo({ ...bookInfo, price: e.target.value })}
+            />
+          </div>
+
+          {/* Buttons */}
+          <button className="post-button" onClick={handlePost}>Post Book</button>
+          <button className="back-button" onClick={() => navigate('/home')}>Back to Home</button>
+        </form>
+      </div>
     </div>
-    );
+  );
 };
+
+export default PostYourBook;

@@ -5,6 +5,7 @@ import user_icon from '../Assets/person.png';
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 import web_icon from "../Assets/web logo.jpg";
+import axios from 'axios'; 
 
 export const LoginSignup = () => {
     const [action, setAction] = useState("Login");
@@ -16,39 +17,57 @@ export const LoginSignup = () => {
     const [userData, setUserData] = useState({});
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         let formErrors = {};
         if (action === "Login") {
             if (!username) formErrors.username = "Username is required";
             if (!password) formErrors.password = "Password is required";
-
-            if (!formErrors.username && !formErrors.password) {
-                if (userData.username !== username || userData.password !== password) {
-                    formErrors.login = "Invalid username or password";
-                }
-            }
         } else {
             if (!username) formErrors.username = "Username is required";
             if (!email) formErrors.email = "Email is required";
             if (!password) formErrors.password = "Password is required";
         }
-
+    
         if (Object.keys(formErrors).length === 0) {
-            if (action === "Sign Up") {
-                setUserData({ username, email, password });
-                alert("Signup successful! You can now log in.");
-            } else {
-                navigate("/home");
-            } 
+            if (action === "Login") {
+                try {
+                    const response = await axios.post("http://localhost:8000/api/auth/login", {
+                        username,
+                        password,
+                    });
+    
+                    // Store JWT tokens in local storage
+                    localStorage.setItem("accessToken", response.data.access);
+                    localStorage.setItem("refreshToken", response.data.refresh);
+                    localStorage.setItem("user", JSON.stringify(response.data.user)); // Store user data
 
+                    navigate("/home");
+                } catch (error) {
+                    setErrors({ login: "Invalid username or password" });
+                }
+            } else {
+                // Sign Up
+                try {
+                    const response = await axios.post("http://localhost:8000/api/auth/register", {
+                        username,
+                        email,
+                        password,
+                    });
+    
+                    if (response.status === 201) {  // Assuming 201 for successful creation
+                        alert("Signup successful! You can now log in.");
+                        setAction("Login"); // Switch to login form after successful signup
+                    }
+                } catch (error) {
+                    setErrors({ signup: "Signup failed. Please try again." });
+                }
+            }
         } else {
             setErrors(formErrors);
         }
-      
     };
-
     return (
         <div className='container2'>
             <div className='container'>

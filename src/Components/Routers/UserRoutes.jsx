@@ -2,9 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import { HomePage } from "../HomePage/HomePage"; 
 import { LoginSignup } from "../LoginSignup/LoginSignup"; 
 import { ProfilePage } from "../Profile/ProfilePage";
-import { PostYourBook } from "../PostYourBook/PostYourBook";
+import  PostYourBook  from "../PostYourBook/PostYourBook";
 import { YourPostings } from "../YourPostings/YourPostings";
 import {BookDescription} from "../BookDescription/BookDescription";
+import {YourBookDetails} from "../YourBookDetails/YourBookDetails";
 const UserRoutes = () => {
     return (
         <Routes>
@@ -14,6 +15,7 @@ const UserRoutes = () => {
             <Route path="/postyourbook" element={<PostYourBook/>} />
             <Route path="/yourpostings" element={<YourPostings/>} />
             <Route path="/bookdescription" element={<BookDescription/>} />
+            <Route path="/yourbookdetails" element={<YourBookDetails/>} />
         </Routes>
     );
 };

@@ -1,21 +1,36 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './BookDescription.css';
+import './YourBookDetails.css';
 import book_icon from '../Assets/book.jpg';
+import axios from 'axios';
 
-export const BookDescription = () => {
+export const YourBookDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   const {
-    title, author, publication_date, publisher_name, edition, category,
+    id,title, author, publication_date, publisher_name, edition, category,
     language, condition, price, seller
   } = location.state || {};
 
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      await axios.delete(`http://localhost:8000/api/books/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include JWT token in headers
+        },
+      });
+      // Redirect to the user's postings or homepage after deletion
+      navigate('/YourPostings');
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  };
   return (
     <div className="background">
       <div className="Post-container">
-        <h2>Book Description</h2>
+        <h2>Your Book Details</h2>
         <div className="PostYourBook-info1">
           <br />
           <img src={book_icon} alt="book" />
@@ -54,7 +69,8 @@ export const BookDescription = () => {
         </div>
 
         <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
+        <button onClick={handleDelete} className="Delete">Delete</button> {/* Updated delete button */}
       </div>
-    </div>
-  );
+ </div>
+ );
 };

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './YourBookDetails.css';
-import book_icon from '../Assets/book.jpg';
 import axios from 'axios';
 
 export const YourBookDetails = () => {
@@ -91,9 +90,6 @@ export const YourBookDetails = () => {
       <div className="Post-container200">
         <h2>Your Book Details</h2>
         <div className="PostYourBook-info1200">
-          <br />
-          <img src={book_icon} alt="book" />
-          <br />
           <p><b>Book Name:</b></p>
           <input
             type='text'
@@ -210,14 +206,15 @@ export const YourBookDetails = () => {
             disabled={!isEditing}
           />
         </div>
-
-        <button onClick={() => navigate('/home')} className="back-button200">Back to Home</button>
-        <button onClick={handleDelete} className="Delete200">Delete</button>
+        <div className='buttonContainer'>
         {isEditing ? (
           <button onClick={handleUpdate} className="Update200">Update</button>
         ) : (
           <button onClick={handleEditToggle} className="Edit200">Edit</button>
         )}
+        <button onClick={() => navigate('/home')} className="back-button200">Back to Home</button>
+        <button onClick={handleDelete} className="Delete200">Delete</button>
+        </div>
       </div>
   </div>
 );

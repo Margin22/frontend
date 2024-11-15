@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './BookDescription.css'; // Update the CSS import path
-import book_icon from '../Assets/book.jpg';
 
 export const BookDescription = () => {
   const location = useLocation();
@@ -17,9 +16,6 @@ export const BookDescription = () => {
       <div className="Post-container1000">
         <h2>Book Description</h2>
         <div className="PostYourBook-info21000">
-          <br />
-          <img src={book_icon} alt="book" />
-          <br />
           <p><b>Book Name:</b></p>
           <input type='text' value={title} disabled />
           <p><b>Author's Name:</b></p>

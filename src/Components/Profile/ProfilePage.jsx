@@ -62,7 +62,7 @@ export const ProfilePage = () => {
                     <p><b>Email:</b></p>
                     <input type='text' value={userData.email || ""} disabled />
                 </div>  
-                <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
+                <button onClick={() => navigate('/home')} className="back-button100">Back to Home</button>
             </div>
         </div>
     );

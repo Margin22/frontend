@@ -1,5 +1,5 @@
 /* General styling for the homepage */
-.homepage {
+.homepage700 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
 }
 
 /* Header styling */
-.header {
+.header700 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,13 +23,13 @@
 }
 
 /* Search bar container */
-.search-container {
+.search-container700 {
     display: flex;
     align-items: center;
     flex: 1;
 }
 
-.search-bar {
+.search-bar700 {
     width: 90%;
     padding: 10px;
     border-radius: 5px;
@@ -37,20 +37,20 @@
     font-size: 16px;
 }
 
-.search {
+.search700 {
     background: none;
     border: none;
     margin-left: 10px;
     cursor: pointer;
 }
 
-.search img {
+.search700 img {
     width: 24px;
     height: 24px;
 }
 
 /* Category button styling */
-.category-button {
+.category-button700 {
     padding: 10px;
     margin-left: 10px;
     background-color: #15add7;
@@ -61,12 +61,12 @@
     transition: background 0.3s;
 }
 
-.category-button:hover {
+.category-button700:hover {
     background-color: #0056b3;
 }
 
 /* Book listing container */
-.book-list {
+.book-list700 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +78,7 @@
 }
 
 /* Container for all book items */
-.book-items-container2 {
+.book-items-container2700 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +88,7 @@
 }
 
 /* Book item styling */
-.book-item {
+.book-item700 {
     display: flex;
     align-items: center;
     padding: 15px;
@@ -100,11 +100,11 @@
     transition: transform 0.2s;
 }
 
-.book-item:hover {
+.book-item700:hover {
     transform: scale(1.02);
 }
 
-.book-image {
+.book-image700 {
     width: 80px;
     height: 80px;
     display: flex;
@@ -114,7 +114,7 @@
 }
 
 /* Book description styling */
-.book-description {
+.book-description700 {
     flex: 1;
     font-size: 14px;
     color: #333;
@@ -123,17 +123,17 @@
     gap: 10px;
 }
 
-.book-description div {
+.book-description700 div {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.book-description label {
+.book-description700 label {
     font-weight: bold;
 }
 
-.book-description input[type="text"] {
+.book-description700 input[type="text"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -143,7 +143,7 @@
 }
 
 /* Sidebar sliding effect */
-.sidebar {
+.sidebar700 {
     position: fixed;
     top: 100px;
     left: -200px;
@@ -159,11 +159,11 @@
     transition: left 0.3s ease;
 }
 
-.sidebar.slide-in {
+.sidebar700.slide-in700 {
     left: 20px;
 }
 
-.sidebar button {
+.sidebar700 button {
     padding: 10px;
     background-color: #3b82f6;
     color: #fff;
@@ -173,12 +173,12 @@
     transition: background 0.3s;
 }
 
-.sidebar button:hover {
+.sidebar700 button:hover {
     background-color: #2a6bc8;
 }
 
 /* Bars icon styling */
-.bars-icon {
+.bars-icon700 {
     font-size: 24px;
     color: white;
     background: none;

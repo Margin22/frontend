@@ -1,4 +1,4 @@
-.background {
+.background800 {
   background-image: url('../Assets/bground3.jpg'); /* Replace with your image path */
   background-size: cover; /* This makes the image cover the entire div */
   background-position: center; /* Center the image */
@@ -7,80 +7,80 @@
   justify-content: center;
   align-items: center;
 }
-.Post-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    height: 170vh;
-    margin: 0 auto;
-    padding: 100px;
-    border: 1px solid #a08080;
-    border-radius: 8px;
-    background-color: #ffffff9f;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+
+.Post-container800 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 170vh;
+  margin: 0 auto;
+  padding: 100px;
+  border: 1px solid #a08080;
+  border-radius: 8px;
+  background-color: #ffffff9f;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.Post-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .PostYourBook-info1 {
-    text-align: left;
-    width: 75%;
-    margin-bottom: 20px;
-  }
-  
-  .PostYourBook-info1 p {
-    display: inline;
-    font-size: 18px;
-    margin: 10px 0;
-    ;
-  }
-
-  .PostYourBook-info2 {
-    text-align: left;
-    width: 75%;
-    margin-bottom: 20px;
-  }
-   
-  .PostYourBook-info2 p {
-    display: inline;
-    font-size: 18px;
-    margin: 10px 0;
-  }
-
-.post-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 10px;
+.Post-container800 h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.post-button:hover {
-    background-color: #218838;
+.PostYourBook-info1800 {
+  text-align: left;
+  width: 75%;
+  margin-bottom: 20px;
 }
 
-.back-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
+.PostYourBook-info1800 p {
+  display: inline;
+  font-size: 18px;
+  margin: 10px 0;
 }
 
-.back-button:hover {
-    background-color: #0056b3;
+.PostYourBook-info2800 {
+  text-align: left;
+  width: 75%;
+  margin-bottom: 20px;
+}
+
+.PostYourBook-info2800 p {
+  display: inline;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.post-button800 {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.post-button800:hover {
+  background-color: #218838;
+}
+
+.back-button800 {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.back-button800:hover {
+  background-color: #0056b3;
 }

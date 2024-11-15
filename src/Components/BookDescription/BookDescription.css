@@ -1,0 +1,87 @@
+.background1000 {
+    background-image: url('../Assets/bground3.jpg'); /* Replace with your image path */
+    background-size: cover; /* This makes the image cover the entire div */
+    background-position: center; /* Center the image */
+    min-height: 100vh; /* Ensures it covers the full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Post-container1000 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 170vh;
+    margin: 0 auto;
+    padding: 100px;
+    border: 1px solid #a08080;
+    border-radius: 8px;
+    background-color: #ffffff9f;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .Post-container1000 h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .PostYourBook-info21000 {
+    text-align: left;
+    width: 75%;
+    margin-bottom: 20px;
+  }
+  
+  .PostYourBook-info21000 p {
+    display: inline;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .PostYourBook-info31000 {
+    text-align: left;
+    width: 75%;
+    margin-bottom: 20px;
+  }
+  
+  .PostYourBook-info31000 p {
+    display: inline;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .post-button1000 {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .post-button1000:hover {
+    background-color: #218838;
+  }
+  
+  .back-button21000 {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .back-button21000:hover {
+    background-color: #0056b3;
+  }
+  

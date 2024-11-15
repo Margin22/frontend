@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import book_icon from '../Assets/book.jpg'; // Import the book icon for the form
 import './PostYourBook.css';
 
 const PostYourBook = () => {
@@ -22,6 +21,7 @@ const PostYourBook = () => {
     condition: '',
     price: '',
   });
+  
   useEffect(() => {
     const fetchSeller = async () => {
       try {
@@ -45,7 +45,7 @@ const PostYourBook = () => {
   
         const userData = await response.json();
   
-        const sellerResponse = await fetch(`http://localhost:8000/api/sellers/detail/`, {
+        const sellerResponse = await fetch('http://localhost:8000/api/sellers/detail/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -77,10 +77,6 @@ const PostYourBook = () => {
   
     fetchSeller();
   }, []);
-  
-  
-  
-  
 
   const handlePost = async () => {
     if (Object.values(bookInfo).some(value => value.trim() === '')) {
@@ -155,66 +151,64 @@ const PostYourBook = () => {
   };
 
   return (
-    <div className="background">
-      <div className="Post-container">
+    <div className="background800">
+      <div className="Post-container800">
         <h2>Post Your Book</h2>
         <form onSubmit={(e) => e.preventDefault()}>
 
-         {/* Seller Info - Editable if New User */}
-<div className="PostYourBook-info1">
-  <p><strong>Seller Name</strong></p>
-  <input
-    type="text"
-    value={bookInfo.sellerName}
-    readOnly={!!sellerInfo} // Editable if no seller info
-    onChange={(e) => setBookInfo({ ...bookInfo, sellerName: e.target.value })}
-  />
-</div>
+          {/* Seller Info - Editable if New User */}
+          <div className="PostYourBook-info1800">
+            <p><strong>Seller Name</strong></p>
+            <input
+              type="text"
+              value={bookInfo.sellerName}
+              readOnly={!!sellerInfo} // Editable if no seller info
+              onChange={(e) => setBookInfo({ ...bookInfo, sellerName: e.target.value })}
+            />
+          </div>
 
-<div className="PostYourBook-info1">
-  <p><strong>Email</strong></p>
-  <input
-    type="email"
-    value={bookInfo.email}
-    readOnly={!!sellerInfo} // Editable if no seller info
-    onChange={(e) => setBookInfo({ ...bookInfo, email: e.target.value })}
-  />
-</div>
+          <div className="PostYourBook-info1800">
+            <p><strong>Email</strong></p>
+            <input
+              type="email"
+              value={bookInfo.email}
+              readOnly={!!sellerInfo} // Editable if no seller info
+              onChange={(e) => setBookInfo({ ...bookInfo, email: e.target.value })}
+            />
+          </div>
 
-<div className="PostYourBook-info1">
-  <p><strong>Address</strong></p>
-  <input
-    type="text"
-    value={bookInfo.address}
-    readOnly={!!sellerInfo} // Editable if no seller info
-    onChange={(e) => setBookInfo({ ...bookInfo, address: e.target.value })}
-  />
-</div>
+          <div className="PostYourBook-info1800">
+            <p><strong>Address</strong></p>
+            <input
+              type="text"
+              value={bookInfo.address}
+              readOnly={!!sellerInfo} // Editable if no seller info
+              onChange={(e) => setBookInfo({ ...bookInfo, address: e.target.value })}
+            />
+          </div>
 
-<div className="PostYourBook-info1">
-  <p><strong>Phone</strong></p>
-  <input
-    type="text"
-    value={bookInfo.phone}
-    readOnly={!!sellerInfo} // Editable if no seller info
-    onChange={(e) => setBookInfo({ ...bookInfo, phone: e.target.value })}
-  />
-</div>
+          <div className="PostYourBook-info1800">
+            <p><strong>Phone</strong></p>
+            <input
+              type="text"
+              value={bookInfo.phone}
+              readOnly={!!sellerInfo} // Editable if no seller info
+              onChange={(e) => setBookInfo({ ...bookInfo, phone: e.target.value })}
+            />
+          </div>
 
-<div className="PostYourBook-info1">
-  <p><strong>Available to Deliver</strong></p>
-  <input
-    type="text"
-    value={bookInfo.deliverable}
-    readOnly={!!sellerInfo} // Editable if no seller info
-    onChange={(e) => setBookInfo({ ...bookInfo, deliverable: e.target.value })}
-  />
-  
-</div>
-
+          <div className="PostYourBook-info1800">
+            <p><strong>Available to Deliver</strong></p>
+            <input
+              type="text"
+              value={bookInfo.deliverable}
+              readOnly={!!sellerInfo} // Editable if no seller info
+              onChange={(e) => setBookInfo({ ...bookInfo, deliverable: e.target.value })}
+            />
+          </div>
 
           {/* Book Info Fields */}
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Book Name</strong></p>
             <input
               type="text"
@@ -223,7 +217,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Author Name</strong></p>
             <input
               type="text"
@@ -232,7 +226,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Publication Date</strong></p>
             <input
               type="date"
@@ -241,7 +235,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Publisher Name</strong></p>
             <input
               type="text"
@@ -250,7 +244,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Edition</strong></p>
             <input
               type="text"
@@ -259,7 +253,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Category</strong></p>
             <input
               type="text"
@@ -268,7 +262,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Language</strong></p>
             <input
               type="text"
@@ -277,7 +271,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Condition</strong></p>
             <input
               type="text"
@@ -286,7 +280,7 @@ const PostYourBook = () => {
             />
           </div>
 
-          <div className="PostYourBook-info2">
+          <div className="PostYourBook-info2800">
             <p><strong>Price</strong></p>
             <input
               type="number"
@@ -295,9 +289,9 @@ const PostYourBook = () => {
             />
           </div>
 
-          {/* Buttons */}
-          <button className="post-button" onClick={handlePost}>Post Book</button>
-          <button className="back-button" onClick={() => navigate('/home')}>Back to Home</button>
+          <button type="button" className="Post-your-book-button800" onClick={handlePost}>
+            Post Book
+          </button>
         </form>
       </div>
     </div>

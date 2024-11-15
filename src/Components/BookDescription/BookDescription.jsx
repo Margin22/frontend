@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './BookDescription.css';
+import './BookDescription.css'; // Update the CSS import path
 import book_icon from '../Assets/book.jpg';
 
 export const BookDescription = () => {
@@ -13,10 +13,10 @@ export const BookDescription = () => {
   } = location.state || {};
 
   return (
-    <div className="background">
-      <div className="Post-container">
+    <div className="background1000">
+      <div className="Post-container1000">
         <h2>Book Description</h2>
-        <div className="PostYourBook-info1">
+        <div className="PostYourBook-info21000">
           <br />
           <img src={book_icon} alt="book" />
           <br />
@@ -40,7 +40,7 @@ export const BookDescription = () => {
           <input type='text' value={price} disabled />
         </div>
         
-        <div className="PostYourBook-info2">
+        <div className="PostYourBook-info31000">
           <p><b>Seller Name:</b></p>
           <input type='text' value={seller?.name} disabled />
           <p><b>Email Address:</b></p>
@@ -53,7 +53,7 @@ export const BookDescription = () => {
           <input type='text' value={seller?.available_to_deliver ? 'Yes' : 'No'} disabled />
         </div>
 
-        <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
+        <button onClick={() => navigate('/home')} className="back-button21000">Back to Home</button>
       </div>
     </div>
   );

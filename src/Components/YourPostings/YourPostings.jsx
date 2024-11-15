@@ -34,16 +34,16 @@ export const YourPostings = () => {
   };
 
   return (
-    <div className="Background2">
-      <div className="book-items-container">
+    <div className="Background600">
+      <div className="book-items-container600">
         <h2>Your Postings</h2>
         {postedBooks.length > 0 ? (
           postedBooks.map((book) => (
-            <div key={book.id} className="book-item" onClick={() => handleBookClick(book)}>
-              <div className="book-image">
+            <div key={book.id} className="book-item600" onClick={() => handleBookClick(book)}>
+              <div className="book-image600">
                 <img src={book_icon} alt="book" />
               </div>
-              <div className="book-description">
+              <div className="book-description600">
                 <label><b>Book Name:</b></label>
                 <input type="text" value={book.title} disabled />
                 <label><b>Category:</b></label>
@@ -58,7 +58,7 @@ export const YourPostings = () => {
         ) : (
           <p>No books found in your postings.</p>
         )}
-        <button onClick={() => navigate('/home')} className="back-button">Back to Home</button>
+        <button onClick={() => navigate('/home')} className="back-button600">Back to Home</button>
       </div>
     </div>
   );

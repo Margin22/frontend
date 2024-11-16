@@ -45,10 +45,11 @@
   .checkout-container2000 p {
     font-size: 1rem;
     color: #555;
-    margin: 25px 0 15px 0;
+    margin: 25px 0 15px -350px; /* Increase the left margin to push text to the left */
     line-height: 1.6;
     transition: color 0.3s ease; /* Transition for paragraph color */
   }
+  
   
   .checkout-container2000:hover p {
     color: #333; /* Darken text color on hover */

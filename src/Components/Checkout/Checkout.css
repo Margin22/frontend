@@ -1,0 +1,99 @@
+/* Checkout.css */
+.background2000 {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f6d365, #fda085); /* Gradient background */
+    transition: background 0.5s ease; /* Smooth background transition */
+    padding: 20px;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .checkout-container2000 {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .checkout-container2000:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  }
+  
+  .checkout-container2000 h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    transition: color 0.3s ease; /* Transition for color */
+  }
+  
+  .checkout-container2000:hover h2 {
+    color: #007bff; /* Change color of title on hover */
+  }
+  
+  .checkout-container2000 p {
+    font-size: 1rem;
+    color: #555;
+    margin: 25px 0 15px 0;
+    line-height: 1.6;
+    transition: color 0.3s ease; /* Transition for paragraph color */
+  }
+  
+  .checkout-container2000:hover p {
+    color: #333; /* Darken text color on hover */
+  }
+  
+  .checkout-container2000 p b {
+    color: #000;
+  }
+  
+  .pay-button2000 {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .pay-button2000:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slight scale up effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+  .pay-button2000:active {
+    background-color: #004085;
+    transform: scale(1); /* Reset scale when clicked */
+  }
+  
+  @media (max-width: 600px) {
+    .checkout-container2000 {
+      padding: 15px;
+    }
+  
+    .checkout-container2000 h2 {
+      font-size: 1.8rem;
+    }
+  
+    .pay-button2000 {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+  

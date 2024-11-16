@@ -48,8 +48,10 @@ export const BookDescription = () => {
           <p><b>Deliverable? (yes/no):</b></p>
           <input type='text' value={seller?.available_to_deliver ? 'Yes' : 'No'} disabled />
         </div>
-
+        <div className='buttonContainer2'>
         <button onClick={() => navigate('/home')} className="back-button21000">Back to Home</button>
+        <button onClick={() => navigate('/checkout')} className='checkout-button21000'>Want to Buy !</button>
+      </div>
       </div>
     </div>
   );

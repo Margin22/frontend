@@ -6,6 +6,7 @@ import  PostYourBook  from "../PostYourBook/PostYourBook";
 import { YourPostings } from "../YourPostings/YourPostings";
 import {BookDescription} from "../BookDescription/BookDescription";
 import {YourBookDetails} from "../YourBookDetails/YourBookDetails";
+import Checkout from "../Checkout/Checkout";
 const UserRoutes = () => {
     return (
         <Routes>
@@ -16,6 +17,7 @@ const UserRoutes = () => {
             <Route path="/yourpostings" element={<YourPostings/>} />
             <Route path="/bookdescription" element={<BookDescription/>} />
             <Route path="/yourbookdetails" element={<YourBookDetails/>} />
+            <Route path="/checkout" element={<Checkout/>} />
         </Routes>
     );
 };
